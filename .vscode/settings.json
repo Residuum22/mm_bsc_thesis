@@ -1,0 +1,17 @@
+{
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "spellright.parserByClass": {
+        "Log": {
+            "parser": "latex"
+        }
+    },
+    "stm32-for-vscode.openOCDPath": false,
+    "cSpell.enabled": true
+}

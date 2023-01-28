@@ -1,0 +1,210 @@
+\documentclass[12pt,a4paper,fleqn,oneside]{report}
+%\documentclass[12pt,a4paper,fleqn,oneside]{scrartcl}
+\usepackage[
+    rmargin=1.2in,
+    lmargin=1.2in
+]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage{t1enc}
+\def\magyarOptions{defaults=hu-min}
+\usepackage[english]{babel}
+
+%\usepackage[utf8]{inputenc}
+%\usepackage[magyar]{babel}
+\usepackage{tikz} 
+\usepackage{longtable}
+\usepackage{xurl}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{t1enc}
+\usepackage{tabularx}
+\usepackage{ltxtable}
+\usepackage{graphicx}
+\usepackage{array,booktabs,enumitem}% http://ctan.org/pkg/{array,booktabs,enumitem}
+\usepackage{pdfpages}
+\usepackage{relsize} 
+
+\usepackage{csquotes}
+
+\usepackage{titlesec}
+\setcounter{secnumdepth}{5}
+
+\usepackage[
+    backend=biber,
+    sorting=none,
+    doi=true
+    ]{biblatex}
+
+\addbibresource{src/references.bib}
+
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage[framed, numbered]{matlab-prettifier}
+
+\usepackage{subfigure}
+
+\usepackage[hidelinks]{hyperref} % 
+    \hypersetup{colorlinks, citecolor=, linkcolor=, urlcolor=blue}
+    \renewcommand\UrlFont{\color{blue}\rmfamily\itshape} % I thought this should make it italic, but it does not
+    \newcommand{\changeurlcolor}[1]{\hypersetup{urlcolor=#1}}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{
+     literate=%
+         {á}{{\'a}}1
+         {í}{{\'i}}1
+         {é}{{\'e}}1
+         {ú}{{\'u}}1
+         {ü}{{\'u}}1
+         {ű}{{\'u}}1
+         {ó}{{\'o}}1
+         {ö}{{\'o}}1
+         {ő}{{\'o}}1
+         {Ö}{{\'O}}1
+         {É}{{\'E}}1
+}
+
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+        \begin{center}
+            \includegraphics[scale=0.1]{img/kitlogo.png}\\
+            \includegraphics[scale=0.5]{img/egyetem.png}\\
+            \vspace{1cm}
+            \huge\textbf{Smart home applications based on Thread network}\\
+            \vspace{1cm}
+            \Large{Author:}\\
+            \LARGE\textbf{Márk Mihalik}\\
+            \vspace{1cm}
+            \Large{Supervisor:}\\
+            \textbf{Dr. Balázs Matolcsy, Ph.D.}\\
+            \vspace{1cm}
+            \Large\textbf{Bachelor of Science}\\
+            \Large\textbf{Thesis}\\
+            \vspace{1cm}
+            \Large\textbf{2021}
+        \end{center}
+        % \begin{tikzpicture}[remember picture,overlay]
+        %     \node[anchor=south east,inner sep=10pt] at (current page.south east)
+        %       {\includegraphics[scale=0.9]{img/hit_logo.png}};
+        % \end{tikzpicture}
+    \end{titlepage}
+}
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
+\usepackage[T1]{fontenc}
+
+\lstdefinestyle{ascii-tree}{
+    literate={├}{|}1 {─}{--}1 {└}{+}1,
+    frame=single
+  }
+ \lstdefinestyle{tree}{
+    literate=
+    {├}{{\smash{\raisebox{-1ex}{\rule{1pt}{\baselineskip}}}\raisebox{0.5ex}{\rule{1ex}{1pt}}}}1 
+    {─}{{\raisebox{0.5ex}{\rule{1.5ex}{1pt}}}}1 
+    {└}{{\smash{\raisebox{0.5ex}{\rule{1pt}{\dimexpr\baselineskip-1.5ex}}}\raisebox{0.5ex}{\rule{1ex}{1pt}}}}1 
+  }
+  
+\lstdefinestyle{device-tree}
+{
+    language=dts,
+    tabsize=8,
+    keepspaces,
+    extendedchars=true,
+    rulecolor=\color{black},
+    basicstyle=\footnotesize,
+    aboveskip=5pt,
+    upquote=true,
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+}
+
+\lstdefinestyle{c-lang}
+{
+    language=c,
+    tabsize=8,
+    keepspaces,
+    extendedchars=true,
+    rulecolor=\color{black},
+    basicstyle=\footnotesize,
+    aboveskip=5pt,
+    upquote=true,
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+}
+
+\lstset{aboveskip=\baselineskip,belowskip=\baselineskip,basicstyle=\ttfamily}
+
+\usepackage{siunitx}
+\sisetup{math-micro={\usefont{T1}{phv}{m}{n}\text{µ}}}
+
+
+\begin{document}
+
+\maketitle
+
+\noindent
+\thispagestyle{empty}
+Alulírott Mihalik Márk, szigorló hallgató kijelentem, hogy ezt a szakdolgozatot meg nem engedett segítség nélkül, saját magam készítettem, csak a megadott forrásokat (szakirodalom, eszközök stb.) használtam fel. Minden olyan részt, melyet szó szerint, vagy azonos értelemben, de átfogalmazva más forrásból átvettem, egyértelműen, a forrás megadásával megjelöltem.
+Hozzájárulok, hogy a jelen munkám alapadatait (szerző(k), cím, angol és magyar nyelvű tartalmi kivonat, készítés éve, konzulens(ek) neve) a BME VIK nyilvánosan hozzáférhető elektronikus formában, a munka teljes szövegét pedig az egyetem belső hálózatán keresztül (vagy hitelesített felhasználók számára) közzétegye. Kijelentem, hogy a benyújtott munka és annak elektronikus verziója megegyezik. Dékáni engedéllyel titkosított diplomatervek esetén a dolgozat szövege csak 3 év eltelte után válik hozzáférhetővé.
+\newline
+\newline
+Kelt: Budapest, 2021. 12. 10.    
+
+
+\clearpage
+
+\renewcommand{\abstractname}{Kivonat}
+\begin{abstract}
+    \noindent
+    \input{src/00_Abstract.tex}
+\end{abstract}
+\clearpage
+
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+    \noindent
+    \input{src/00_AbstracEng.tex}
+\end{abstract}
+\clearpage
+
+
+\chapter{Research}
+\input{src/01_Thread.tex}
+\input{src/02_Zephyr.tex}
+
+\chapter{Own work}
+\input{src/03_BorderRouter.tex}
+\input{src/04_Kezelofelulet.tex}
+\input{src/05_BlindAccessPoint.tex}
+\input{src/06_MinimalSensorNode.tex}
+\input{src/07_PowerNode.tex}
+\input{src/08_Teszteles.tex}
+\clearpage
+\input{src/99_osszefoglalas.tex}
+\clearpage
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+
+% \printbibliography[title={Irodalomjegyzék és hivatkozások}]
+\printbibliography
+
+\clearpage
+\end{document}
